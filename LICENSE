@@ -1,0 +1,8 @@
+Copyright (c) 2026 Regen Renewables (Pvt) Ltd. All rights reserved.
+
+This software, the commissioning workbook and the Regen name and logo are the confidential property of
+Regen Renewables (Pvt) Ltd., 31/10 Castle Street, Colombo 8, Sri Lanka. They must not be copied, shared,
+modified or used without written permission from Regen Renewables (Pvt) Ltd.
+
+Third-party libraries loaded at run time keep their own licences: pdf-lib (MIT), JSZip (MIT or GPLv3),
+IBM Plex fonts via Google Fonts (SIL Open Font License).

@@ -1,0 +1,21 @@
+{
+  "name": "regen-site-commissioning",
+  "version": "1.0.0",
+  "private": true,
+  "description": "On-site solar PV commissioning app for Regen Renewables: live pass/fail checks, A4 PDF report, photo document, Excel workbook export/import.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "workbook": "bash workbook/make_workbook.sh",
+    "test:unit": "cd tests && node unit.js",
+    "test:parity": "cd tests && python3 gen_cases.py && python3 recalc_lo.py cases.xlsx && python3 compare.py",
+    "test:excel": "cd tests && python3 make_hand_workbook.py && node xltest.js && python3 xlcheck.py",
+    "test:e2e": "cd tests && node e2e.js",
+    "test": "npm run test:unit && npm run test:parity && npm run test:excel && npm run test:e2e"
+  },
+  "devDependencies": {
+    "jszip": "3.10.1",
+    "pdf-lib": "1.17.1",
+    "playwright": "1.56.0"
+  }
+}

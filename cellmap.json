@@ -1,0 +1,515 @@
+{
+ "version": 2,
+ "cover": {
+  "name": "C7",
+  "address": "C8",
+  "contact": "C9",
+  "tel_fixed": "C10",
+  "email": "C11",
+  "bill": "C12",
+  "docno": "F7",
+  "rev": "F8",
+  "date": "F9",
+  "tel_mobile": "F10",
+  "weather": "F11",
+  "client": "F12",
+  "epc": "C15",
+  "kwp": "C16",
+  "kwac": "C17",
+  "conn": "C18",
+  "supplier": "C19",
+  "account": "C20",
+  "inv_model": "F15",
+  "ninv": "F16",
+  "roof": "F17",
+  "voltage": "F18",
+  "branch": "F19",
+  "itype": "F20",
+  "pv_model": "C23",
+  "pv_vv": "C24",
+  "npan": "C25",
+  "pv_wp": "F23",
+  "pv_ii": "F24",
+  "nstr": "F25",
+  "prep": "C28",
+  "appr": "C29",
+  "rev_by": "F28",
+  "appr_date": "F29"
+ },
+ "equip": {
+  "sheet": "Equipment and Limits",
+  "first": 8,
+  "n": 8,
+  "cols": {
+   "model": "D",
+   "sn": "E",
+   "cal": "F",
+   "due": "G",
+   "use": "H"
+  }
+ },
+ "limits": {
+  "insdc": {
+   "cell": "D19",
+   "pct": false
+  },
+  "insac": {
+   "cell": "D20",
+   "pct": false
+  },
+  "vocdev": {
+   "cell": "D21",
+   "pct": true
+  },
+  "earth": {
+   "cell": "D22",
+   "pct": false
+  },
+  "vnom": {
+   "cell": "D23",
+   "pct": false
+  },
+  "vtol": {
+   "cell": "D24",
+   "pct": true
+  },
+  "fnom": {
+   "cell": "D25",
+   "pct": false
+  },
+  "ftol": {
+   "cell": "D26",
+   "pct": false
+  },
+  "dt": {
+   "cell": "D27",
+   "pct": false
+  }
+ },
+ "visual": {
+  "sheet": "Visual Inspection",
+  "rows": [
+   8,
+   9,
+   10,
+   11,
+   12,
+   14,
+   15,
+   16,
+   17,
+   18,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   27,
+   28,
+   29,
+   30,
+   31,
+   33,
+   34,
+   35,
+   36,
+   38,
+   39,
+   40,
+   41,
+   42
+  ],
+  "by": "D44",
+  "date": "D45"
+ },
+ "invreg": {
+  "sheet": "Inverters and Panel",
+  "first": 8,
+  "n": 20,
+  "cols": {
+   "loc": "C",
+   "make": "D",
+   "model": "E",
+   "sn": "F",
+   "kw": "G",
+   "spd": "H",
+   "spd_model": "I",
+   "iso_qty": "J",
+   "iso_rating": "K",
+   "dc_cable": "L",
+   "ac_iso": "M",
+   "ac_iso_rating": "N",
+   "rem": "O"
+  }
+ },
+ "panel": {
+  "sheet": "Inverters and Panel",
+  "loc": "E30",
+  "meter_sn": "L30",
+  "brk": "E31",
+  "ct": "L31",
+  "brk_a": "E32",
+  "rcd": "L32",
+  "ip": "E33",
+  "cable_inv": "L33",
+  "ac_spd": "E34",
+  "cable_util": "L34",
+  "meter": "E35",
+  "earth": "L35"
+ },
+ "dc": {
+  "first": 15,
+  "last": 50,
+  "head": {
+   "loc": "L7",
+   "makemodel": "F8",
+   "sn": "L8",
+   "kw": "F9",
+   "dt": "L9",
+   "by": "F10",
+   "wx": "L10"
+  },
+  "cols": {
+   "mppt": "C",
+   "str": "D",
+   "mods": "E",
+   "voc": "F",
+   "ip": "H",
+   "in": "I",
+   "ipn": "J",
+   "pol": "K",
+   "opv": "L",
+   "cur": "M",
+   "rem": "O"
+  },
+  "num": [
+   "mods",
+   "voc",
+   "ip",
+   "in",
+   "ipn",
+   "opv",
+   "cur"
+  ],
+  "sheets": [
+   "DC INV 01",
+   "DC INV 02",
+   "DC INV 03",
+   "DC INV 04",
+   "DC INV 05",
+   "DC INV 06",
+   "DC INV 07",
+   "DC INV 08",
+   "DC INV 09",
+   "DC INV 10",
+   "DC INV 11",
+   "DC INV 12",
+   "DC INV 13",
+   "DC INV 14",
+   "DC INV 15",
+   "DC INV 16",
+   "DC INV 17",
+   "DC INV 18",
+   "DC INV 19",
+   "DC INV 20"
+  ],
+  "officer": "D55"
+ },
+ "ac": {
+  "sheet": "AC Output",
+  "date": "D7",
+  "by": "K7",
+  "first": 11,
+  "last": 32,
+  "officer": "D37",
+  "cols": {
+   "pt": "C",
+   "time": "D",
+   "v1": "E",
+   "v2": "F",
+   "v3": "G",
+   "i1": "H",
+   "i2": "I",
+   "i3": "J",
+   "kw": "K",
+   "pf": "L",
+   "hz": "M",
+   "rem": "O"
+  },
+  "num": [
+   "v1",
+   "v2",
+   "v3",
+   "i1",
+   "i2",
+   "i3",
+   "kw",
+   "pf",
+   "hz"
+  ],
+  "time": [
+   "time"
+  ]
+ },
+ "acins": {
+  "sheet": "AC Insulation and Earthing",
+  "date": "D7",
+  "volt": "J7",
+  "by": "N7",
+  "first": 10,
+  "last": 30,
+  "officer": "D46",
+  "cols": {
+   "pt": "C",
+   "rem": "O"
+  },
+  "vcols": [
+   "D",
+   "E",
+   "F",
+   "G",
+   "H",
+   "I",
+   "J",
+   "K",
+   "L",
+   "M"
+  ],
+  "earth": {
+   "first": 35,
+   "last": 44,
+   "cols": {
+    "loc": "C",
+    "val": "D",
+    "rem": "I"
+   },
+   "num": [
+    "val"
+   ]
+  }
+ },
+ "th": {
+  "sheet": "Thermal Imaging",
+  "date": "D7",
+  "amb": "H7",
+  "irr": "D8",
+  "by": "H8",
+  "officer": "D74",
+  "pan": {
+   "first": 12,
+   "last": 23,
+   "cols": {
+    "where": "C",
+    "sn": "D",
+    "time": "E",
+    "t": "F",
+    "c": "I"
+   },
+   "num": [
+    "t"
+   ],
+   "time": [
+    "time"
+   ]
+  },
+  "inv": {
+   "first": 27,
+   "last": 46,
+   "cols": {
+    "where": "C",
+    "pt": "D",
+    "time": "E",
+    "t": "F",
+    "c": "I"
+   },
+   "num": [
+    "t"
+   ],
+   "time": [
+    "time"
+   ]
+  },
+  "sw": {
+   "first": 50,
+   "last": 71,
+   "cols": {
+    "where": "C",
+    "rating": "D",
+    "time": "E",
+    "tin": "F",
+    "tout": "G",
+    "c": "I"
+   },
+   "num": [
+    "tin",
+    "tout"
+   ],
+   "time": [
+    "time"
+   ]
+  }
+ },
+ "bat": {
+  "sheet": "Battery",
+  "brand": "D7",
+  "type": "D8",
+  "kwh": "D9",
+  "vn": "D10",
+  "mods": "H7",
+  "strs": "H8",
+  "bms": "H9",
+  "by": "H10",
+  "officer": "D57",
+  "mod": {
+   "first": 14,
+   "last": 37,
+   "cols": {
+    "mod": "C",
+    "str": "D",
+    "vn": "E",
+    "vm": "F",
+    "ins": "G",
+    "s": "H",
+    "rem": "I"
+   },
+   "num": [
+    "vn",
+    "vm",
+    "ins"
+   ]
+  },
+  "prm": {
+   "first": 41,
+   "cols": {
+    "val": "D",
+    "std": "E",
+    "s": "F",
+    "rem": "G"
+   }
+  },
+  "tests": {
+   "first": 53,
+   "cols": {
+    "t0": "D",
+    "t1": "E",
+    "soc": "F",
+    "volt": "G",
+    "cur": "H",
+    "dur": "I",
+    "rem": "J"
+   },
+   "time": [
+    "t0",
+    "t1"
+   ]
+  }
+ },
+ "prot": {
+  "sheet": "Protection and Grid",
+  "first": 7,
+  "cols": {
+   "val": "D",
+   "std": "E",
+   "s": "F",
+   "rem": "G"
+  },
+  "by": "D22",
+  "date": "F22"
+ },
+ "punch": {
+  "sheet": "Punch List",
+  "first": 7,
+  "last": 36,
+  "cols": {
+   "date": "C",
+   "loc": "D",
+   "issue": "E",
+   "cat": "F",
+   "by": "G",
+   "action": "H",
+   "resp": "I",
+   "target": "J",
+   "s": "K",
+   "closed": "L"
+  },
+  "date": [
+   "date",
+   "target",
+   "closed"
+  ]
+ },
+ "summary": {
+  "sheet": "Summary",
+  "col": "D",
+  "rows": {
+   "visual": 10,
+   "dc1": 11,
+   "dc2": 12,
+   "dc3": 13,
+   "dc4": 14,
+   "dc5": 15,
+   "dc6": 16,
+   "dc7": 17,
+   "dc8": 18,
+   "dc9": 19,
+   "dc10": 20,
+   "dc11": 21,
+   "dc12": 22,
+   "dc13": 23,
+   "dc14": 24,
+   "dc15": 25,
+   "dc16": 26,
+   "dc17": 27,
+   "dc18": 28,
+   "dc19": 29,
+   "dc20": 30,
+   "acout": 31,
+   "acins": 32,
+   "earth": 33,
+   "thermal": 34,
+   "battery": 35,
+   "prot": 36,
+   "punch": 37
+  }
+ },
+ "sign": {
+  "sheet": "Sign-Off",
+  "date": "C7",
+  "officer": "C8",
+  "roles": {
+   "first": 12,
+   "cols": {
+    "name": "C",
+    "co": "D",
+    "date": "F"
+   }
+  },
+  "hand": {
+   "first": 19,
+   "col": "E"
+  },
+  "comments": "B28"
+ },
+ "serials": {
+  "sheet": "Panel Serials",
+  "first": 7,
+  "last": 66,
+  "cols": {
+   "no": "B",
+   "inv": "C",
+   "mppt": "D",
+   "str": "E",
+   "sn": "F",
+   "rem": "G"
+  }
+ },
+ "app": {
+  "sheet": "_app",
+  "pid": "B2",
+  "exported": "B3",
+  "app": "B4",
+  "engineer": "B5"
+ },
+ "dcSummaryKeyPrefix": "dc"
+}

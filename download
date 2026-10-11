@@ -1,0 +1,7 @@
+node_modules/
+tests/out/
+tests/cases.xlsx
+tests/cases.json
+__pycache__/
+*.pyc
+.DS_Store
