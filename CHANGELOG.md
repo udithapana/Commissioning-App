@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0 — 2026-10-11
+* Installable app (own manifest, id and scope) and offline use via a service worker limited to the app's folder —
+  fixes the clash with other apps on the same github.io address (*“This app is already installed”*).
+* Install icons; persistent storage requested.
+
 ## 1.0.0 — 2026-10-11
 * Excel tab: download the project as the Regen workbook, download the blank workbook, import a filled workbook.
 * Workbook v2: logo beside the title, 20 inverter sheets (03–20 hidden until needed), Panel Serials sheet,

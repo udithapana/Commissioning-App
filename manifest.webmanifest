@@ -1,0 +1,17 @@
+{
+  "id": "regen-site-commissioning",
+  "name": "Regen Site Commissioning",
+  "short_name": "Commissioning",
+  "description": "On-site solar PV commissioning: live checks, A4 report, photos and Excel workbook.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f4f5f2",
+  "theme_color": "#12303f",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -433,4 +433,17 @@ document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.id
 (async function () {
   try { await initStore(); } catch (e) { console.error(e); }
   render(false);
+  setupInstall();
 })();
+// Installable app + offline use when hosted as a website (e.g. GitHub Pages). The manifest and service worker are
+// scoped to this app's own folder, so other apps on the same site (other repositories under the same github.io
+// address) neither capture this app nor get captured by it.
+function setupInstall() {
+  if (IN_ARTIFACT || !/^https?:$/.test(location.protocol)) return;
+  const add = (tag, attrs) => { const el = document.createElement(tag); Object.assign(el, attrs); document.head.appendChild(el); };
+  add('link', { rel: 'manifest', href: 'manifest.webmanifest' });
+  add('link', { rel: 'apple-touch-icon', href: 'icons/apple-touch-icon.png' });
+  add('meta', { name: 'theme-color', content: '#12303f' });
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js', { scope: './' }).catch(e => console.warn('offline cache not available', e));
+  if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => { });
+}

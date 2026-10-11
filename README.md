@@ -23,6 +23,9 @@ and the same data produces the A4 commissioning report (PDF), a photo document (
 
 ```
 index.html                  built standalone app (open in a browser, or publish with GitHub Pages)
+manifest.webmanifest        install settings (own scope / id)
+sw.js                       offline cache, scoped to this app's folder
+icons/                      install icons
 dist/artifact.html          built page for a Claude artifact (shared database + downloads)
 src/                        app source, concatenated in this order by scripts/build.sh
   00-shell.html             styles + page shell
@@ -62,13 +65,34 @@ or `src/12-template.js`.
 
 * **On a phone or laptop:** open `index.html` in Chrome, Edge or Safari. Projects, photos and history are stored in that
   browser only — use *History & Backup → Back up all projects* regularly.
-* **GitHub Pages:** Settings → Pages → deploy from the `main` branch, root folder. The site serves `index.html`.
+* **GitHub Pages:** Settings → Pages → deploy from the `main` branch, root folder. Open `https://<user>.github.io/<repo>/`
+  and choose *Install app* / *Add to Home screen*. Once opened online, the app also works **offline** on site
+  (page, PDF and Excel libraries are cached by `sw.js`).
   Keep the repository **private** if the data or layout is confidential (GitHub Pages on a private repository needs a paid plan).
 * **Claude artifact (shared by the team):** publish `dist/artifact.html` with the `db` and `downloads` capabilities;
   projects and photos are then shared by everyone the artifact is shared with.
 
 The page loads two libraries from public CDNs when they are first needed: `pdf-lib 1.17.1` (PDFs) and `jszip 3.10.1` (Excel).
 Everything else is in the single HTML file.
+
+### Several apps on the same `github.io` address
+
+All GitHub Pages project sites of one account share one web address (`https://<user>.github.io`). Browsers therefore treat
+them as **one site**: an app installed from one repository whose manifest or service worker covers the whole site (`/`)
+makes Chrome say *“This app is already installed”* on every other repository and can open the wrong app.
+
+This app is built to live next to others safely:
+
+* `manifest.webmanifest` uses `"scope": "./"`, `"start_url": "./"` and its own `"id"`, so it installs as its own app;
+* `sw.js` is registered for this folder only, takes priority over a site-wide service worker of another app,
+  and only deletes its own `regen-sca-*` caches;
+* storage keys are prefixed (`sca.…`, IndexedDB `sca-photos`), so other apps don't overwrite projects.
+
+Fix the **other** apps the same way: in each one set `"scope": "./"`, `"start_url": "./"` and a unique `"id"` in its
+manifest, register its service worker with `navigator.serviceWorker.register('sw.js', { scope: './' })`, and never call
+`localStorage.clear()` or delete caches it does not own. Then uninstall the old app from the phone and install it again.
+The cleanest separation is a separate address per app (a custom domain such as `commissioning.regen.lk`, or another
+host such as Netlify / Cloudflare Pages) — browsers then keep their data completely apart.
 
 ## Tests
 
@@ -83,6 +107,7 @@ npm test                       # all suites
 | `test:unit` | 63 edge cases — exact limit boundaries, `>999`, `OL`, `1,000`, `0,5`, MPPT `01` = `1`, section statuses |
 | `test:parity` | Random readings written into the workbook, recalculated in LibreOffice, compared with the app: every DC / AC / insulation / earth / thermal result must match (needs LibreOffice) |
 | `test:excel` | Export → workbook opens cleanly, keeps logo / drop-downs / formatting, Excel's own formulas agree with the app; export → import gives the same project; a hand-filled workbook imports correctly; an old-layout workbook is rejected with a clear message |
+| `test:pwa` | Installable app with its own id and scope, its own service worker wins over another app's site-wide one, works offline (incl. PDF + Excel), other app unaffected |
 | `test:e2e` | Browser run of every screen, field and button; DC workflow; serials; persistence; hostile-text and broken-file security checks; PDFs incl. a 40-page stress report; photos; history / backup / restore; 320–1280 px layouts; dark mode; shared-database mode with two users |
 
 Set `CHROMIUM_PATH` to use a specific Chromium build.
