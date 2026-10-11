@@ -2,15 +2,16 @@
    Scope is this app's own folder only (e.g. /<repo>/), so it never touches other apps on the same github.io site,
    and it takes priority over any service worker another app registered for the whole site.
    Gives offline use on site: the page, icons and the PDF / Excel / font libraries are kept in a cache. */
-const CACHE = 'regen-sca-v1';
-const CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png'];
+const CACHE = 'regen-sca-v2';
+// every file sits next to index.html (flat), so the site also works when uploaded through GitHub's "Upload files" page
+const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png'];
 const LIBS = ['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'];
 const LIB_HOSTS = /^(cdn\.jsdelivr\.net|cdnjs\.cloudflare\.com|unpkg\.com|fonts\.googleapis\.com|fonts\.gstatic\.com)$/;
 
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
     const c = await caches.open(CACHE);
-    await c.addAll(CORE);
+    await Promise.all(CORE.map(u => c.add(u).catch(() => { })));   // a missing file must not stop the app from installing
     await Promise.all(LIBS.map(async u => { try { const r = await fetch(u, { mode: 'no-cors' }); await c.put(u, r); } catch (err) { /* cached later on first use */ } }));
     await self.skipWaiting();
   })());

@@ -1849,7 +1849,7 @@ function setupInstall() {
   if (IN_ARTIFACT || !/^https?:$/.test(location.protocol)) return;
   const add = (tag, attrs) => { const el = document.createElement(tag); Object.assign(el, attrs); document.head.appendChild(el); };
   add('link', { rel: 'manifest', href: 'manifest.webmanifest' });
-  add('link', { rel: 'apple-touch-icon', href: 'icons/apple-touch-icon.png' });
+  add('link', { rel: 'apple-touch-icon', href: 'apple-touch-icon.png' });
   add('meta', { name: 'theme-color', content: '#12303f' });
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js', { scope: './' }).catch(e => console.warn('offline cache not available', e));
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => { });
